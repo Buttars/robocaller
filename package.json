@@ -12,13 +12,17 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.0.0",
+    "@angular/cdk": "~8.0.0",
     "@angular/common": "~8.0.0",
     "@angular/compiler": "~8.0.0",
     "@angular/core": "~8.0.0",
     "@angular/forms": "~8.0.0",
+    "@angular/material": "^8.0.0",
     "@angular/platform-browser": "~8.0.0",
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
+    "@datorama/akita": "^3.12.1",
+    "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
@@ -28,10 +32,13 @@
     "@angular/cli": "~8.0.0",
     "@angular/compiler-cli": "~8.0.0",
     "@angular/language-service": "~8.0.0",
-    "@types/node": "~8.9.4",
+    "@datorama/akita-ng-router-store": "^3.0.0",
+    "@datorama/akita-ngdevtools": "^1.0.2",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "husky": "^2.3.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -39,9 +46,39 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1",
     "protractor": "~5.4.0",
+    "rxjs-tslint-rules": "^4.23.2",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-etc": "^1.5.3",
     "typescript": "~3.4.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "ignore": [
+      "**/src/test.ts",
+      "**/*.spec.ts",
+      "**/karma.conf.ts",
+      "node_modules",
+      "package.json"
+    ],
+    "linters": {
+      "**/*.{css,scss,html,ts,json,js}": [
+        "prettier --write",
+        "git add"
+      ],
+      "**/*.ts": [
+        "tslint -p ./tsconfig.json --fix",
+        "git add"
+      ]
+    },
+    "relative": true
   }
 }
