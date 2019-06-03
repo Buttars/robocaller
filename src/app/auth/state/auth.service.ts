@@ -43,6 +43,8 @@ export class AuthService {
       photoURL,
     };
 
-    return this.store.update(data) && userRef.set(data, { merge: true });
+    this.store.update(data);
+
+    return userRef.set(data, { merge: true });
   };
 }
