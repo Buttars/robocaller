@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>New Campaign</h1>
+
+<mat-divider></mat-divider>
+
+<section class="contents" [formGroup]="form" mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <input matInput formControlName="title" placeholder="Title" />
+    <mat-label>Title</mat-label>
+  </mat-form-field>
+</section>
+
+<mat-divider></mat-divider>
+
+<section class="actions" mat-dialog-actions>
+  <button mat-flat-button [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid" color="primary">
+    Create
+  </button>
+</section>

@@ -1,0 +1,16 @@
+<section class="heading">
+  <h2>Campaigns</h2>
+  <button mat-mini-fab (click)="addCampaign()" color="accent"><mat-icon>add</mat-icon></button>
+</section>
+
+<mat-divider></mat-divider>
+
+<h3 *ngIf="!campaigns?.length">No campaings</h3>
+
+<mat-accordion *ngIf="campaigns?.length">
+  <app-campaign
+    *ngFor="let campaign of campaigns"
+    [campaign]="campaign"
+    (toggleCampaign)="toggleCampaign.emit($event)"
+  ></app-campaign>
+</mat-accordion>

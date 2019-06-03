@@ -1,0 +1,16 @@
+<mat-expansion-panel displayMode="flat" [expanded]="expanded">
+  <mat-expansion-panel-header>
+    <mat-panel-title>{{ campaign.title }}</mat-panel-title>
+    <mat-panel-description>
+      <ng-container *ngIf="campaign?.lastRan">{{ campaign.lastRan | date: 'short' }}</ng-container>
+      <ng-container *ngIf="!campaign?.lastRan">Never ran</ng-container>
+      <mat-icon>{{ campaign.scheduled ? 'stop' : 'play_arrow' }}</mat-icon>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <mat-action-row>
+    <button mat-flat-button (click)="toggleCampaign.emit(campaign)" color="primary">
+      {{ campaign.scheduled ? 'Stop' : 'Start' }}
+    </button>
+  </mat-action-row>
+</mat-expansion-panel>

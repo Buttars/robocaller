@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CampaignsQuery, CampaignsStore } from '@robocaller/campaigns';
-import { CampaignsService } from 'src/app/campaigns';
+import { CampaignsQuery, Campaign } from '@robocaller/campaigns';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-campaigns',
@@ -9,11 +9,13 @@ import { CampaignsService } from 'src/app/campaigns';
   styleUrls: ['./campaigns.component.css'],
 })
 export class CampaignsComponent implements OnInit {
-  campaigns$;
+  campaigns$: Observable<Campaign[]>;
 
-  constructor(private store: CampaignsStore, private query: CampaignsQuery, private s: CampaignsService) {}
+  constructor(private query: CampaignsQuery) {}
 
   ngOnInit() {
-    this.campaigns$ = this.query.campaigns$;
+    this.query.campaigns$.subscribe(campaignsState => {
+      this.campaigns$ = of(campaignsState.campaigns as Array<Campaign>);
+    });
   }
 }
