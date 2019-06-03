@@ -17,5 +17,3 @@ export class AuthStore extends EntityStore<AuthState, Auth> {
     super(createInitalState());
   }
 }
-
-export const authStore = new AuthStore();

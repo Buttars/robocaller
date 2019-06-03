@@ -16,7 +16,9 @@
     "paths": {
       "@robocaller/core-ui": ["./src/app/core-ui/index.ts"],
       "@robocaller/auth": ["./src/app/auth/index.ts"],
-      "@robocaller/material": ["./src/app/material/index.ts"]
+      "@robocaller/material": ["./src/app/material/index.ts"],
+      "@robocaller/robocaller": ["./src/app/robocaller/index.ts"],
+      "@robocaller/campaigns": ["./src/app/campaigns/index.ts"]
     }
   }
 }
