@@ -1,3 +1,10 @@
 <mat-toolbar color="primary">
-  Robocaller
+  <section>
+    Robocaller
+  </section>
+
+  <section>
+    <button mat-flat-button *appShowIfSignedIn="false" (click)="signIn()">Sign In</button>
+    <button mat-flat-button *appShowIfSignedIn="true" (click)="signOut()">Sign Out</button>
+  </section>
 </mat-toolbar>

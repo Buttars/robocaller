@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:recommended", "tslint-config-prettier", "rxjs-tslint-rules"],
+  "extends": ["tslint:recommended", "tslint-config-prettier", "rxjs-tslint-rules", "tslint-etc"],
   "rules": {
     "comment-format": [true, "check-space"],
     "arrow-return-shorthand": true,
@@ -32,6 +32,8 @@
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-use-before-declare": true,
+    "no-unused-expression": true,
+    "no-unused-declaration": true,
     "no-var-requires": false,
     "object-literal-key-quotes": [true, "as-needed"],
     "object-literal-sort-keys": false,

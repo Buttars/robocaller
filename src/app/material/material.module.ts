@@ -54,7 +54,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 // import { MdePopoverModule } from '@material-extended/mde';
 
-const importsAndExports = [
+const modules = [
   // CDK
   A11yModule,
   BidiModule,
@@ -111,7 +111,7 @@ const importsAndExports = [
 ];
 
 @NgModule({
-  imports: [CommonModule, ...importsAndExports],
-  exports: importsAndExports,
+  imports: [CommonModule, ...modules],
+  exports: modules,
 })
 export class MaterialModule {}
