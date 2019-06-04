@@ -1,27 +1,38 @@
 # Robocaller
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
+> An enterprise scale robocaller capable of creating and scheduling robocalls with mp3s and text-to-speech over the phone.
 
-## Development server
+## Demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Here is a live working demo of the latest code. [https://stackblitz.com/github/Buttars/robocaller](https://owaivzvv.github.stackblitz.io)
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Want to contribute? Great!
 
-## Build
+To fix a bug or enhance an existing module, follow these steps:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Fork the repo
+- Create a new branch (`git checkout -b improve-feature`)
+- Add changes to reflect the changes made
+- Commit your changes (`git commit -am 'feat: improve feature'`)
+- Push to the branch (`git push origin improve-feature`)
+- Create a Pull Request
 
-## Running unit tests
+### Bug / Feature Request
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/buttars/robocaller/issues/new) by including your search query and the expected result.
 
-## Running end-to-end tests
+If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/buttars/robocaller/issues/new). Please include sample queries and their corresponding results.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Built with
 
-## Further help
+- [Angular](https://angular.io) - A modern web framework build by Google.
+- [Firebase](https://firebase.io) - Serverless technology also by Google.
+- [Material Components](https://material.angular.io) - A component library brought to you by, you guessed it, Google.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Contributors
+
+| [![Landon Buttars](https://github.com/buttars.png?size=144)](https://github.com/buttars) |
+| ---------------------------------------------------------------------------------------- |
+| [Landon Buttars](https://github.com/buttars)                                             |
