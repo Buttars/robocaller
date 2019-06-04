@@ -18,7 +18,13 @@ export class AuthService {
     private afs: AngularFirestore,
     private store: AuthStore,
     private router: Router
-  ) {}
+  ) {
+    const storedAuth = localStorage.getItem('auth');
+
+    if (storedAuth) {
+      this.store.update(JSON.parse(storedAuth));
+    }
+  }
 
   googleSignIn = async () => {
     const provider = new auth.GoogleAuthProvider();
@@ -29,6 +35,7 @@ export class AuthService {
 
   signOut = async () => {
     this.store.reset();
+    localStorage.removeItem('auth');
     await this.afAuth.auth.signOut();
     this.router.navigate(['']);
   };
@@ -44,6 +51,7 @@ export class AuthService {
     };
 
     this.store.update(data);
+    localStorage.setItem('auth', JSON.stringify(data));
 
     return userRef.set(data, { merge: true });
   };
