@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MaterialModule } from '@robocaller/material';
 import { CampaignListComponent } from './campaign-list.component';
+import { CampaignComponent } from '../campaign/campaign.component';
 
 describe('CampaignListComponent', () => {
   let component: CampaignListComponent;
@@ -8,9 +10,9 @@ describe('CampaignListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CampaignListComponent ]
-    })
-    .compileComponents();
+      imports: [MaterialModule],
+      declarations: [CampaignListComponent, CampaignComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

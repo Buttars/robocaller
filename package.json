@@ -65,22 +65,10 @@
     }
   },
   "lint-staged": {
-    "ignore": [
-      "**/src/test.ts",
-      "**/*.spec.ts",
-      "**/karma.conf.ts",
-      "node_modules",
-      "package.json"
-    ],
+    "ignore": ["**/src/test.ts", "**/karma.conf.ts", "node_modules", "package.json"],
     "linters": {
-      "**/*.{css,scss,html,ts,json,js}": [
-        "prettier --write",
-        "git add"
-      ],
-      "**/*.ts": [
-        "tslint -p ./tsconfig.json --fix",
-        "git add"
-      ]
+      "**/*.{css,scss,html,ts,json,js}": ["prettier --write", "git add"],
+      "**/*.ts": ["tslint -p ./tsconfig.json --fix", "git add"]
     },
     "relative": true
   }
