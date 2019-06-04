@@ -1,1 +1,5 @@
-<app-campaign-list [campaigns]="campaigns$ | async"></app-campaign-list>
+<app-campaign-list
+  [campaigns]="campaigns$ | async"
+  (toggleCampaign)="toggleCampaign($event)"
+  (newCampaign)="newCampaign($event)"
+></app-campaign-list>

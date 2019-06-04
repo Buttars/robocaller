@@ -11,6 +11,7 @@ import { Auth } from './auth.model';
 export class AuthQuery extends QueryEntity<AuthState, Auth> {
   isSignedIn$ = this.select(state => !!state.uid);
   user$ = this.select();
+  uid$ = this.select('uid');
 
   constructor(protected store: AuthStore) {
     super(store);
