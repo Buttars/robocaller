@@ -7,12 +7,46 @@
     <input matInput formControlName="title" placeholder="Title" />
     <mat-label>Title</mat-label>
   </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <input matInput formControlName="description" placeholder="Description" />
+    <mat-label>Description</mat-label>
+  </mat-form-field>
+
+  <section class="steps" formArrayName="steps">
+    <div class="step" *ngFor="let step of steps.controls; let i = index">
+      <mat-form-field>
+        <input matInput [formGroupName]="i" placeholder="Step" />
+      </mat-form-field>
+      <button mat-icon-button (click)="removeStep(i)"><mat-icon>remove_circle_outline</mat-icon></button>
+    </div>
+    <button mat-flat-button (click)="addStep()">Add Step</button>
+  </section>
+
+  <section class="phones" formArrayName="phones">
+    <div class="phone" *ngFor="let phone of phones.controls; let i = index" [formGroupName]="i">
+      <mat-form-field>
+        <input matInput placeholder="area" formControlName="area" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="prefix" formControlName="prefix" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="line" formControlName="line" />
+      </mat-form-field>
+
+      <button mat-icon-button (click)="removePhone(i)"><mat-icon>remove_circle_outline</mat-icon></button>
+    </div>
+    <button mat-flat-button (click)="addPhone()">Add Phone</button>
+  </section>
 </section>
 
 <mat-divider></mat-divider>
 
 <section class="actions" mat-dialog-actions>
-  <button mat-flat-button [mat-dialog-close]="form.getRawValue()" [disabled]="!form.valid" color="primary">
+  <button mat-flat-button [mat-dialog-close]="newCampaign()" [disabled]="!form.valid" color="primary">
     Create
   </button>
 </section>

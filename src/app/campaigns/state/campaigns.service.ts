@@ -11,23 +11,28 @@ import { CampaignsStore } from './campaigns.store';
   providedIn: 'root',
 })
 export class CampaignsService {
-  campaignsCollection$: AngularFirestoreCollection<Campaign>;
+  campaignsCollection: AngularFirestoreCollection<Campaign>;
 
   constructor(private afs: AngularFirestore, private authQuery: AuthQuery, private store: CampaignsStore) {
     this.authQuery.uid$.subscribe(uid => {
-      this.campaignsCollection$ = this.afs.doc(`users/${uid}`).collection('campaigns');
+      if (!uid) {
+        return;
+      }
+      this.campaignsCollection = this.afs.doc(`users/${uid}`).collection('campaigns');
     });
   }
 
-  newCampaign = (campaign: Campaign) => {};
+  createCampaign = (campaign: Campaign) => {
+    // prettier-ignore
+    if (!campaign) { return; }
+
+    campaign.id = this.afs.createId();
+    this.campaignsCollection.doc(campaign.id).set(campaign);
+  };
 
   toggleCampaign = (campaign: Campaign) => {
     const toggledCampaign = { ...campaign, scheduled: !campaign.scheduled };
 
-    this.store.update({
-      campaigns: [toggledCampaign],
-    });
-
-    return this.campaignsCollection$.doc(campaign.id).set(toggledCampaign);
+    return this.campaignsCollection.doc(campaign.id).set(toggledCampaign);
   };
 }

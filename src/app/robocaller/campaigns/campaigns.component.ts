@@ -23,5 +23,8 @@ export class CampaignsComponent implements OnInit {
     this.campaignService.toggleCampaign(campaign);
   };
 
-  newCampaign = (campaign: Campaign) => {};
+  newCampaign = (campaign: Campaign) => {
+    console.log(campaign);
+    this.campaignService.createCampaign(campaign);
+  };
 }

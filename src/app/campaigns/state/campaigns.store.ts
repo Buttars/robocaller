@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+import { tap } from 'rxjs/operators';
 
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
 
-import { Campaign, createInitalState } from './campaign.model';
-
-import { AngularFirestore } from '@angular/fire/firestore';
-
-import { of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-
 import { AuthQuery } from '@robocaller/auth';
+import { Campaign, createInitalState } from './campaign.model';
 
 export interface CampaignsState extends EntityState<Campaign> {}
 
@@ -21,19 +18,23 @@ export interface CampaignsState extends EntityState<Campaign> {}
   resettable: true,
 })
 export class CampaignsStore extends EntityStore<CampaignsState, Campaign> {
+  campaignsCollection;
+
   constructor(private authQuery: AuthQuery, private afs: AngularFirestore) {
     super(createInitalState());
-    this.authQuery.user$
+
+    this.authQuery.uid$
       .pipe(
-        switchMap(user => {
-          if (!user.uid) {
-            return of({ campaigns: [] });
-          }
-          return this.afs.doc(`campaigns/${user.uid}`).valueChanges();
+        tap(uid => {
+          // prettier-ignore
+          if (!uid) { return; }
+          this.campaignsCollection = this.afs.doc(`users/${uid}`).collection('campaigns');
         })
       )
-      .subscribe(campaigns => {
-        this.update(campaigns);
-      });
+      .subscribe();
+
+    this.campaignsCollection.valueChanges().subscribe(campaigns => {
+      this.update({ campaigns });
+    });
   }
 }

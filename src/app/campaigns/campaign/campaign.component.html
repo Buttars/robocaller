@@ -8,6 +8,8 @@
     </mat-panel-description>
   </mat-expansion-panel-header>
 
+  <pre>{{ campaign.phones }}</pre>
+
   <mat-action-row>
     <button mat-flat-button (click)="toggleCampaign.emit(campaign)" color="primary">
       {{ campaign.scheduled ? 'Stop' : 'Start' }}

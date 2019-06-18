@@ -20,13 +20,11 @@ export class CampaignListComponent implements OnInit {
 
   addCampaign = () => {
     const dialogRef = this.dialog.open(NewCampaignDialogComponent, {
-      width: '500px',
+      width: '600px',
       data: {},
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      console.log('Closed');
       if (result) {
         this.newCampaign.emit(result);
       }

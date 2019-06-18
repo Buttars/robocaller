@@ -1,0 +1,25 @@
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  & > .step {
+    display: flex;
+  }
+}
+
+.phones {
+  display: flex;
+  flex-direction: column;
+  & > .phone {
+    display: flex;
+  }
+}

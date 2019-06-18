@@ -3,8 +3,9 @@ export interface Campaign {
   title: string;
   description: string;
   steps: Array<string>;
+  phones: Array<string>;
   scheduled: boolean;
-  lastRan: number | Date;
+  lastRan: undefined | number | Date;
 }
 
 export function createCampaign(params: Partial<Campaign>) {
